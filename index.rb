@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
-require_relative './models/library.rb'
+require 'faker'
+require 'time'
+require_relative './db/seed'
+require_relative './moduls/validation'
+require_relative './models/library'
+require_relative './models/author'
+require_relative './models/book'
+require_relative './models/reader'
+require_relative './models/order'
+require_relative './errors/presence_error'
+require_relative './errors/type_class_error'
+require_relative './errors/no_positive_error'
 
 library = Library.new
 library.generate_data

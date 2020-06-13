@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../db/seed.rb'
-
 class Library
   include Seed
 
   BOOK_QUANTITY = 3
+  DATA_FILE = 'db/data.yml'
 
   attr_accessor :authors, :books, :readers, :orders
 
@@ -17,11 +16,11 @@ class Library
   end
 
   def store_data
-    File.open('db/data.yml', 'w') { |file| file.write(to_yaml) }
+    File.open(DATA_FILE, 'w') { |file| file.write(to_yaml) }
   end
 
   def load_data
-    data = YAML.load_file('db/data.yml')
+    data = YAML.load_file(DATA_FILE)
     @authors = data.authors
     @books = data.books
     @readers = data.readers
@@ -37,8 +36,7 @@ class Library
   end
 
   def number_readers_of_top_books
-    prizes_books = top_books(BOOK_QUANTITY)
-    @orders.select { |order| prizes_books.include? order.book }.map(&:reader).uniq.length
+    @orders.select { |order| top_books(BOOK_QUANTITY).include? order.book }.map(&:reader).uniq.length
   end
 
   private

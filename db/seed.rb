@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-require 'faker'
-require_relative '../models/author.rb'
-require_relative '../models/book.rb'
-require_relative '../models/reader.rb'
-require_relative '../models/order.rb'
-
 module Seed
   def generate_data
     seed_authors
@@ -30,17 +24,17 @@ module Seed
 
   def seed_readers
     20.times do
-      @readers << Reader.new(Faker::Name.unique.name,
-                             Faker::Internet.unique.email,
-                             Faker::Address.city,
-                             Faker::Address.street_name,
-                             Faker::Address.building_number)
+      @readers << Reader.new(name: Faker::Name.unique.name,
+                             email: Faker::Internet.unique.email,
+                             city: Faker::Address.city,
+                             street: Faker::Address.street_name,
+                             house: Faker::Address.building_number.to_i)
     end
   end
 
   def seed_orders
     100.times do
-      @orders << Order.new(@books.sample, @readers.sample, Date.today - rand(0..30))
+      @orders << Order.new(book: @books.sample, reader: @readers.sample, date: Date.today - rand(0..30))
     end
   end
 end
