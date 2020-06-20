@@ -3,7 +3,7 @@
 class Order
   include Validation
 
-  attr_reader :book, :reader
+  attr_reader :book, :reader, :date
 
   validate :book,   :type, Book
   validate :reader, :type, Reader

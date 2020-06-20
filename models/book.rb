@@ -3,7 +3,7 @@
 class Book
   include Validation
 
-  attr_reader :title
+  attr_reader :title, :author
 
   validate :title,  :presence
   validate :title,  :type, String

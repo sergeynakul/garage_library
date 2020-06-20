@@ -3,6 +3,8 @@
 class Author
   include Validation
 
+  attr_reader :name, :biography
+
   validate :name, :presence
   validate :name, :type, String
 

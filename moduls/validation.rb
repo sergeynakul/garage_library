@@ -33,8 +33,8 @@ module Validation
       raise PresenceError, "#{name} can't be blank" if value.to_s.empty? || value.nil?
     end
 
-    def validate_positive(value, name)
-      raise NoPositiveError, "#{name} must be positive" unless value.positive?
+    def validate_more_than(value, name, conditional_value)
+      raise NumberValueError, "#{name} must be more than #{conditional_value}" unless value > conditional_value
     end
 
     def validate_type(value, name, type_class)
