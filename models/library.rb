@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Library
+  include Validation
+
   DATA_FILE = 'db/data.yml'
 
   attr_reader :authors, :books, :readers, :orders
@@ -10,6 +12,26 @@ class Library
     @books = []
     @readers = []
     @orders = []
+  end
+
+  def add_authors(author)
+    validate_type(author, author, Author)
+    @authors << author
+  end
+
+  def add_books(book)
+    validate_type(book, book, Book)
+    @books << book
+  end
+
+  def add_readers(reader)
+    validate_type(reader, reader, Reader)
+    @readers << reader
+  end
+
+  def add_orders(order)
+    validate_type(order, order, Order)
+    @orders << order
   end
 
   def store_data

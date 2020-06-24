@@ -14,7 +14,8 @@ require_relative './errors/type_class_error'
 require_relative './errors/number_value_error'
 
 library = Library.new
-Seed.generate_data(library)
+seed = Seed.new(library)
+seed.generate_data
 library.store_data
 library.load_data
 
