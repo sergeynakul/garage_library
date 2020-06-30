@@ -44,17 +44,17 @@ class Library
     @orders = data.orders
   end
 
-  def fetch_author_by(index)
+  def fetch_author_by_index(index)
     data = YAML.load_file(DATA_FILE)
     data.authors[index]
   end
 
-  def fetch_book_by(index)
+  def fetch_book_by_index(index)
     data = YAML.load_file(DATA_FILE)
     data.books[index]
   end
 
-  def fetch_reader_by(index)
+  def fetch_reader_by_index(index)
     data = YAML.load_file(DATA_FILE)
     data.readers[index]
   end
