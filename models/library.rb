@@ -45,18 +45,15 @@ class Library
   end
 
   def fetch_author_by_index(index)
-    data = YAML.load_file(DATA_FILE)
-    data.authors[index]
+    @authors[index]
   end
 
   def fetch_book_by_index(index)
-    data = YAML.load_file(DATA_FILE)
-    data.books[index]
+    @books[index]
   end
 
   def fetch_reader_by_index(index)
-    data = YAML.load_file(DATA_FILE)
-    data.readers[index]
+    @readers[index]
   end
 
   def top_readers(quantity)
