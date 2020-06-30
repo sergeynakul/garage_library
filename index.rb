@@ -17,6 +17,7 @@ library = Library.new
 seed = Seed.new(library)
 seed.generate_data
 library.store_data
+library = Library.new
 library.load_data
 
 puts 'Your choice:'

@@ -5,8 +5,6 @@ class Library
 
   DATA_FILE = 'db/data.yml'
 
-  attr_reader :authors, :books, :readers, :orders
-
   def initialize
     @authors = []
     @books = []
@@ -46,6 +44,21 @@ class Library
     @orders = data.orders
   end
 
+  def fetch_author_by(index)
+    data = YAML.load_file(DATA_FILE)
+    data.authors[index]
+  end
+
+  def fetch_book_by(index)
+    data = YAML.load_file(DATA_FILE)
+    data.books[index]
+  end
+
+  def fetch_reader_by(index)
+    data = YAML.load_file(DATA_FILE)
+    data.readers[index]
+  end
+
   def top_readers(quantity)
     most_popular(quantity, :reader)
   end
@@ -58,6 +71,10 @@ class Library
     popular_books = top_books(quantity)
     @orders.select { |order| popular_books.include? order.book }.map(&:reader).uniq.length
   end
+
+  protected
+
+  attr_reader :authors, :books, :readers, :orders
 
   private
 
